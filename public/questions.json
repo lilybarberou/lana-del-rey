@@ -1,0 +1,21 @@
+[
+    [
+        {
+            "question": "How much albums has Lana Del Rey in 2023?",
+            "answer": "10",
+            "options": ["9", "11", "8"]
+        },
+        {
+            "question": "What is the name of Lana Del Rey's first album?",
+            "answer": "Sirens",
+            "options": ["Lust for Life", "Ultraviolence", "Born To Die"]
+        }
+    ],
+    [
+        {
+            "question": "What is the name of Lana Del Rey's most listened album?",
+            "answer": "Born To Die",
+            "options": ["Ultraviolence", "Lust for Life", "Honeymoon"]
+        }
+    ]
+]
