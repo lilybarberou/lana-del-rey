@@ -3,39 +3,45 @@ import styled from 'styled-components';
 import Songs from '@/components/Songs';
 import Quadriptych from '@/components/Quadriptych';
 import Quiz from '@/components/Quiz';
+import Head from 'next/head';
 
 export default function Home() {
     return (
-        <S.Container>
-            <S.Content>
-                <S.Navigation>
-                    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UCqk3CdGN_j8IR9z4uBbVPSg">
-                        youtube
-                    </a>
-                    <a target="_blank" rel="noopener noreferrer" href="https://uk.shoplanadelrey.com/">
-                        merch
-                    </a>
-                </S.Navigation>
-                <h1>Lana Del Rey</h1>
-                <h2>welcome to a very fan page</h2>
-                <Quiz src="/lana-2.png" reverse={true} />
-                <Quiz src="/lana-1.png" index={1} />
-                <Songs />
-                <Quadriptych />
-                <S.Navigation $noMargin={true}>
-                    <a target="_blank" rel="noopener noreferrer" href="https://lilybarberou.fr/">
-                        about me, the fan
-                    </a>
-                    <a target="_blank" rel="noopener noreferrer" href="https://youtu.be/rLCPmF-uxb4">
-                        a very good concert
-                    </a>
-                    <a target="_blank" rel="noopener noreferrer" href="https://lanadelrey.com/">
-                        official website
-                    </a>
-                </S.Navigation>
-            </S.Content>
-            <S.Background src="/bg.jpg" width={2000} height={3000}></S.Background>
-        </S.Container>
+        <>
+            <Head>
+                <title>Lana Del Rey</title>
+            </Head>
+            <S.Container>
+                <S.Content>
+                    <S.Navigation>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UCqk3CdGN_j8IR9z4uBbVPSg">
+                            youtube
+                        </a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://uk.shoplanadelrey.com/">
+                            merch
+                        </a>
+                    </S.Navigation>
+                    <h1>Lana Del Rey</h1>
+                    <h2>welcome to a very fan page</h2>
+                    <Quiz src="/lana-2.png" reverse={true} />
+                    <Quiz src="/lana-1.png" index={1} />
+                    <Songs />
+                    <Quadriptych />
+                    <S.Navigation $noMargin={true}>
+                        <a target="_blank" rel="noopener noreferrer" href="https://lilybarberou.fr/">
+                            about me, the fan
+                        </a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://youtu.be/rLCPmF-uxb4">
+                            a very good concert
+                        </a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://lanadelrey.com/">
+                            official website
+                        </a>
+                    </S.Navigation>
+                </S.Content>
+                <S.Background src="/bg.jpg" width={2000} height={3000}></S.Background>
+            </S.Container>
+        </>
     );
 }
 
