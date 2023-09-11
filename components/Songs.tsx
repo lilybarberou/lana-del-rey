@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import styled from 'styled-components';
 import top from '../public/top.json';
+import clsx from 'clsx';
 
 type Song = {
     title: string;
@@ -30,69 +30,35 @@ export default function Songs() {
     };
 
     return (
-        <S.Top>
-            <span>top 5</span>
-            <div ref={songs}>
+        <div className="mt-[150px] flex flex-col items-center gap-10">
+            <span className="text-primary text-3xl">top 5</span>
+            <div ref={songs} className="flex flex-col items-center gap-5">
                 {top.map((song: Song, i) => (
-                    <S.Song key={i}>
-                        <span onMouseMove={(e) => moveImg(e, i)} onMouseEnter={() => toggleCover(i)} onMouseLeave={() => toggleCover(i)}>
+                    <div className="relative" key={i}>
+                        <span
+                            className="cursor-default"
+                            onMouseMove={(e) => moveImg(e, i)}
+                            onMouseEnter={() => toggleCover(i)}
+                            onMouseLeave={() => toggleCover(i)}
+                        >
                             {song.title}
                         </span>
-                        <Image src={song.cover} width={150} height={150} alt={song.title} />
-                    </S.Song>
+                        <Image
+                            className={clsx(
+                                'w-40 h-40 max-w-none absolute z-[1] top-1/2 left-full opacity-0 pointer-events-none transition-opacity duration-200 ease-in-out',
+                                '[&.active]:opacity-100'
+                            )}
+                            src={song.cover}
+                            width={160}
+                            height={160}
+                            alt={song.title}
+                        />
+                    </div>
                 ))}
             </div>
-            <Link href="https://open.spotify.com/playlist/3sl30zwXXWQl7dH8l5jQfL?si=5aa0551ae5134a7e">get my playlist</Link>
-        </S.Top>
+            <Link className="text-primary after:bg-primary" href="https://open.spotify.com/playlist/3sl30zwXXWQl7dH8l5jQfL?si=5aa0551ae5134a7e">
+                get my playlist
+            </Link>
+        </div>
     );
 }
-
-const S: any = {};
-S.Top = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 150px;
-    gap: 40px;
-
-    > span,
-    a {
-        color: #e8d276;
-    }
-
-    > span {
-        font-size: 32px;
-    }
-
-    a::after {
-        background: #e8d276;
-    }
-
-    > div {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-    }
-`;
-
-S.Song = styled.div`
-    position: relative;
-
-    span {
-        cursor: default;
-    }
-
-    img {
-        position: absolute;
-        z-index: 1;
-        pointer-events: none;
-        top: 50%;
-        left: 100%;
-        opacity: 0;
-        transition: opacity 0.2s ease-in-out;
-    }
-    img.active {
-        opacity: 1;
-    }
-`;
